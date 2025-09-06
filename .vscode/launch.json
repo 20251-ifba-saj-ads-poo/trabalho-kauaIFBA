@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Bicicleta",
-            "request": "launch",
-            "mainClass": "br.edu.ifba.saj.fwads/br.edu.ifba.saj.fwads.Bicicleta",
-            "projectName": "fx-template"
-        },
-        {
-            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
