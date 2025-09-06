@@ -1,6 +1,7 @@
 package br.edu.ifba.saj.fwads.controller;
 
 import br.edu.ifba.saj.fwads.App;
+import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.model.Usuario;
 import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
@@ -46,11 +47,10 @@ public class MasterController {
     @FXML
     private Circle userPicture;
 
-    private Usuario usuarioLogado;
+    private Member currentUser;
 
-    public void setUsuarioLogado(Usuario usuarioLogado) {
-        this.usuarioLogado = usuarioLogado;
-        setEmail(usuarioLogado.getEmail());
+    public void setCurrentUser(Member user) {
+        this.currentUser = user;
     }
 
     @FXML
@@ -59,7 +59,7 @@ public class MasterController {
         alert.showAndWait()
                 .filter(response -> response == ButtonType.YES)
                 .ifPresent(response -> {
-                    App.setRoot("controller/Login.fxml");
+                    App.setRoot("controller/Start.fxml");
                 });
     }
 
