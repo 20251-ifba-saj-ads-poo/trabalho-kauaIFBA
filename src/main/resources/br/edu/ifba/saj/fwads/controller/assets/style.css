@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Archivo';
-    src: url('fonts/Archivo-Regular.ttf');
-}
-
 .top {
     -fx-background-color: green;
 }
@@ -109,10 +104,18 @@
 
 }
 
+.btn-clear-white {
+    -fx-background-color: rgb(255, 255, 255);
+}
 
+.btn-round-white {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-background-radius: 1000px;
+    -fx-border-color: rgb(140, 140, 140);
+    -fx-border-radius: 1000px;
+}
 
 .btn-round-blue {
-    -fx-font-family: "Archivo";
     -fx-background-color: rgb(40, 126, 255);
     -fx-background-radius: 1000px;
 }

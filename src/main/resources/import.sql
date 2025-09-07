@@ -1,2 +1,0 @@
-MERGE INTO Usuario (id, login, senha, email) KEY(login) VALUES (RANDOM_UUID(), 'admin', 'admin', 'admin@admin.com');
-MERGE INTO Member (id, name, cpf, password) KEY(cpf) VALUES(RANDOM_UUID(), 'admin', '00000000000', 'admin' )

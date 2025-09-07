@@ -13,10 +13,6 @@ import java.util.UUID;
 
 @Entity
 public class Member extends AbstractEntity{
-    @Column
-    @NotBlank
-    @Size(min = 5)
-    private String password;
 
     @Column
     @NotBlank
@@ -26,7 +22,12 @@ public class Member extends AbstractEntity{
     @Column
     @NotBlank
     @Size(min = 11, max = 11)
-    private String cpf; // Usado no login
+    private String cpf; // KEY PARA GERAR O UUID
+
+    @Column
+    @NotBlank
+    @Size(min = 5)
+    private String password;
 
     @ManyToMany
     private List<Meeting> attendedMeetings; // Encontros que participou
@@ -36,6 +37,21 @@ public class Member extends AbstractEntity{
 
     @OneToMany(mappedBy = "host")
     private List<Meeting> myMeetings;
+
+    public Member(@NotBlank @Size String name, @NotBlank @Size(min = 11, max = 11) String cpf,
+                  @NotBlank @Size(min = 5)String password) {
+
+        this.name = name;
+        this.cpf = cpf;
+        this.password = password;
+        this.attendedMeetings = null;
+        this.subscribedMeetings = null;
+        this.myMeetings = null;
+    }
+
+    public Member() {
+
+    }
 
     // Getters
     public String getName() { return name; }
