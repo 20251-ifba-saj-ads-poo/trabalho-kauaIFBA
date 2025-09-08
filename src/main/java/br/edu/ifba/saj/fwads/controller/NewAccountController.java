@@ -34,6 +34,8 @@ public class NewAccountController {
             Member newUser = new Member(txName.getText(), txCpf.getText(), txPassword.getText());
             memberService.create(newUser);
 
+            new Alert(Alert.AlertType.CONFIRMATION, "Conta criada com sucesso! Acessando como usuário " + newUser.getName()).showAndWait();
+
             App.setRoot("controller/Master.fxml");
             MasterController controller = (MasterController) App.getController();
             controller.setCurrentUser(newUser);

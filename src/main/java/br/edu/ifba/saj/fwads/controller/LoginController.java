@@ -27,6 +27,8 @@ public class LoginController {
         try {
             Member user = memberService.validaLogin(txUsuario.getText(), txSenha.getText());
 
+            new Alert(AlertType.CONFIRMATION, "Acessando como usuário " + user.getName()).showAndWait();
+
             App.setRoot("controller/Master.fxml");
             MasterController controller = (MasterController) App.getController();
             controller.setCurrentUser(user);
