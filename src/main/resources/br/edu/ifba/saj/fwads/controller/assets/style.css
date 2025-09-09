@@ -105,7 +105,16 @@
 }
 
 .btn-clear-white {
+
     -fx-background-color: rgb(255, 255, 255);
+}
+
+.btn-clear-white:hover{
+    -fx-background-color: rgb(186, 186, 186);
+}
+
+.btn-clear-white:pressed{
+    -fx-background-color: rgb(186, 186, 186);
 }
 
 .btn-round-white {

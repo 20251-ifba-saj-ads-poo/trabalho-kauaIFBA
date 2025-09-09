@@ -20,7 +20,7 @@ public class CadAutorController {
 
     private Service<Autor> serviceAutor = new Service<>(Autor.class);
     
-    public void setMasterController(MasterController masterController) {
+    public void setMenuController(MasterController masterController) {
         this.masterController = masterController;
     }
 

@@ -1,11 +1,12 @@
 package br.edu.ifba.saj.fwads.service;
 
 import br.edu.ifba.saj.fwads.exception.CpfUniquenessException;
-import br.edu.ifba.saj.fwads.exception.EmptyFieldException;
 import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
 import br.edu.ifba.saj.fwads.exception.LoginInvalidoException;
 import br.edu.ifba.saj.fwads.model.Member;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -24,31 +25,33 @@ public class MemberService extends Service<Member> {
         }
     }
 
-    // Verificar se CPF está no formato válido
-    public void validaFieldFormat(String name, String cpf, String senha) throws IncorretFormatException {
-        if(cpf.length() != 11 || cpf.isBlank()) {
-            throw new IncorretFormatException("Campo CPF inválido.");
-        }
-        if(senha.length() < 5 || senha.isBlank()) {
-            throw new IncorretFormatException("Campo senha inválido.");
-        }
-        if(name.length() < 5 || name.isBlank()) {
-            throw new IncorretFormatException("Campo nome inválido");
-        }
-    }
+    public Member create(String name, String cpf, String senha) throws CpfUniquenessException, IncorretFormatException {
+        List<String> errors = new ArrayList<>();
 
-    // Verificar se todos campos estão preenchidos
-    public void validaEmptyField(String name, String cpf, String senha) throws EmptyFieldException {
-        if (name.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
-            throw new EmptyFieldException("Preencha todos campos para continuar.");
+        if (cpf == null || cpf.length() != 11 || cpf.isBlank()) {
+            errors.add("CPF inválido: deve ter 11 dígitos e não pode estar em branco.");
         }
 
-    }
+        if (senha == null || senha.length() < 5 || senha.isBlank()) {
+            errors.add("Senha inválida: deve ter no mínimo 5 caracteres e não pode estar em branco.");
+        }
 
+        if (name == null || name.length() < 5 || name.isBlank()) {
+            errors.add("Nome inválido: deve ter no mínimo 5 caracteres e não pode estar em branco.");
+        }
 
-    public void validaUniquenessCpf(String cpf) throws CpfUniquenessException {
-            if(!findByMap(Map.of("cpf", cpf)).isEmpty()){ // O MÉTODO FIND BY MAP RETORNA UMA LISTA, DÁ PARA ANALISAR SE A LISTA ESTÁ VAZIA PARA VALIDAR SE EXISTE OCORRÊNCIA
-                throw new CpfUniquenessException("Já existe uma conta vinculada à este CPF.");
-            }
+        if (!errors.isEmpty()) {
+            String allErrors = String.join("\n", errors);
+            throw new IncorretFormatException(allErrors);
+        }
+
+        if(!findByMap(Map.of("cpf", cpf)).isEmpty()){
+            throw new CpfUniquenessException("Já existe uma conta vinculada à este CPF.");
+        }
+
+        Member newUser = new Member(name, cpf, senha);
+        create(newUser);
+
+        return null;
     }
 }
