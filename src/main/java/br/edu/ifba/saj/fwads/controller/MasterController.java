@@ -91,9 +91,12 @@ public class MasterController {
 
     @FXML
     void showCadAutor(ActionEvent event) {
+        /*
         limparBotoes(event.getSource());
         CadAutorController controller = (CadAutorController) showFXMLFile("CadAutor.fxml");
         controller.setMasterController(this);
+
+         */
     }
 
     @FXML

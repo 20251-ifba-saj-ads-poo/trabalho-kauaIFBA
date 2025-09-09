@@ -10,9 +10,9 @@
 
 <BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="main" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.MenuController">
    <left>
-      <VBox fx:id="menu" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="1080.0" prefWidth="340.0" spacing="48.0" styleClass="field-round-white" stylesheets="@assets/style.css" BorderPane.alignment="TOP_LEFT">
+      <VBox fx:id="menu" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="1080.0" prefWidth="340.0" styleClass="field-round-white" stylesheets="@assets/style.css" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Button fx:id="menuItemHome" alignment="TOP_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showHome" prefHeight="33.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Home" textFill="#012e40">
+            <Button fx:id="menuItemHome" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showHome" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Home" textFill="#012e40">
                <padding>
                   <Insets bottom="5.0" left="10.0" />
                </padding>
@@ -30,9 +30,9 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="menuItemCadAutor" alignment="TOP_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCadAutor" prefHeight="35.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Cadastro Autores" textFill="#012e40">
+            <Button fx:id="menuItemCadAutor" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCadAutor" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Cadastro Autores" textFill="#012e40">
                <padding>
-                  <Insets bottom="5.0" left="10.0" />
+                  <Insets left="10.0" />
                </padding>
                <font>
                   <Font name="Archivo Regular" size="33.0" />
@@ -45,7 +45,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemCadLivro" alignment="TOP_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCadLivro" prefHeight="35.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Cadastro Livros" textFill="#012e40">
+            <Button fx:id="menuItemCadLivro" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCadLivro" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Cadastro Livros" textFill="#012e40">
                <padding>
                   <Insets bottom="5.0" left="10.0" />
                </padding>
@@ -60,7 +60,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemListAutor" alignment="TOP_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showListAutor" prefHeight="35.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Listar Autores" textFill="#012e40">
+            <Button fx:id="menuItemListAutor" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showListAutor" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Listar Autores" textFill="#012e40">
                <padding>
                   <Insets bottom="5.0" left="10.0" />
                </padding>
@@ -75,10 +75,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemListLivro" alignment="TOP_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showListLivro" prefHeight="35.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Listar Livros" textFill="#012e40">
-               <padding>
-                  <Insets bottom="5.0" left="10.0" />
-               </padding>
+            <Button fx:id="menuItemListLivro" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showListLivro" prefHeight="81.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Listar Livros" textFill="#012e40">
                <font>
                   <Font name="Archivo Regular" size="33.0" />
                </font>
