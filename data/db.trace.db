@@ -420,3 +420,7 @@ MERGE INTO Book (id, title, author, genre, synopsis, publisher, publicationYear)
 2025-09-11 16:08:19.067074-03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'2008-11-11' (BOOK: ""PUBLICATIONYEAR"" INTEGER)"; SQL statement:
 MERGE INTO Book (id, title, author, genre, synopsis, publisher, publicationYear) KEY(title, author) VALUES (RANDOM_UUID(), 'A Revolta de Atlas', 'Ayn Rand', 'Ficção Filosófica', 'A história de uma sociedade em colapso', 'Atlas Books', '2008-11-11') [22018-224]
+2025-09-11 16:14:17.610812-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "INTEGER to DATE" [22018-224]
+2025-09-11 16:14:21.984559-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "INTEGER to DATE" [22018-224]

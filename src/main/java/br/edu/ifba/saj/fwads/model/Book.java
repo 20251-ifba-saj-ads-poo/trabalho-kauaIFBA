@@ -41,8 +41,7 @@ public class Book extends AbstractEntity {
 
     @Column
     @NotBlank
-    @Temporal(TemporalType.DATE)
-    private Date publicationYear;
+    private LocalDate publicationYear;
 
     public Book(@NotBlank @Size(min = 5) String title,@NotBlank @Size(min = 5) String author,@NotBlank @Size(min = 5) String genre,@NotBlank @Size(min = 5) String synopsis,@NotBlank @Size(min = 5) String publisher, LocalDate publicationYear) {
         this.title = title;
