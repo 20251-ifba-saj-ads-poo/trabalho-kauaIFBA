@@ -15,7 +15,6 @@ public class BookService  extends Service<Book> {
     public BookService() {
         super(Book.class);
     }
-
     public Book create(String title, String author, String genre, String synopsis, String publisher, LocalDate publicationYear) throws IncorretFormatException, BookUniquinessException {
         // LIDAR COM ERRO DE PREENCHIMENTO
         List<String> errors = new ArrayList<>();
@@ -51,6 +50,6 @@ public class BookService  extends Service<Book> {
         }
 
         Book newBook = new Book(title, author, genre, synopsis, publisher, publicationYear);
-        return newBook;
+        return this.create(newBook);
     }
 }

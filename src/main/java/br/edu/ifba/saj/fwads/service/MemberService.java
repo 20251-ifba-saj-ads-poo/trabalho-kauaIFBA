@@ -51,8 +51,8 @@ public class MemberService extends Service<Member> {
         }
 
         Member newUser = new Member(name, cpf, senha);
-        create(newUser);
+        
 
-        return null;
+        return create(newUser);
     }
 }

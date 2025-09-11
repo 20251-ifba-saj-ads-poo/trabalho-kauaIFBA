@@ -30,7 +30,7 @@ public class LoginController {
             new Alert(AlertType.CONFIRMATION, "Acessando como usuário " + user.getName()).showAndWait();
 
             App.setRoot("controller/Menu.fxml");
-            MasterController controller = (MasterController) App.getController();
+            MenuController controller = (MenuController) App.getController();
             controller.setCurrentUser(user);
 
         } catch (LoginInvalidoException e) {

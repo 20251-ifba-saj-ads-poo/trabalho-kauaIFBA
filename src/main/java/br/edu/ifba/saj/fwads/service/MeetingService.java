@@ -36,8 +36,8 @@ public class MeetingService extends Service<Meeting>{
             throw new ImpossibleTimeTravel("Impossível agendar para esta data.");
         }
 
-        Meeting newMeeting = new Meeting(date, book, host);
-        return newMeeting;
+        
+        return create(new Meeting(date, book, host));
     }
 
 }

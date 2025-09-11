@@ -2,14 +2,10 @@ package br.edu.ifba.saj.fwads.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.UUID;
 
 @Entity
 public class Book extends AbstractEntity {

@@ -32,7 +32,7 @@ public class NewAccountController {
             new Alert(Alert.AlertType.CONFIRMATION, "Conta criada com sucesso! Acessando como usuário " + newUser.getName()).showAndWait();
 
             App.setRoot("controller/Menu.fxml");
-            MasterController controller = (MasterController) App.getController();
+            MenuController controller = (MenuController) App.getController();
             controller.setCurrentUser(newUser);
         } catch (IncorretFormatException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
