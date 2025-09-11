@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="750.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.CreateBookController">
+   <children>
+      <Label alignment="TOP_LEFT" layoutX="24.0" layoutY="20.0" prefHeight="72.0" prefWidth="360.0" text="Cadastre novo livro" textFill="#012e40">
+         <font>
+            <Font name="Archivo SemiBold" size="32.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="24.0" layoutY="92.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Título" textFill="#012e40" AnchorPane.leftAnchor="0.0">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txTitle" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui o título do livro." styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="24.0" layoutY="172.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Autor" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txAuthor" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui o autor do livro." styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="24.0" layoutY="252.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Gênero" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txGenre" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui o gênero do livro." styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="24.0" layoutY="332.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Editora" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txPublisher" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui a editora do livro." styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="24.0" layoutY="412.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Data de publicação" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dpPublishDate" layoutX="1.0" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui a data de publicação." styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="24.0" layoutY="492.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Sinopse" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txSynopsis" alignment="TOP_LEFT" layoutY="36.0" prefHeight="129.0" prefWidth="360.0" promptText="Insira aqui a sinopse do livro." styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <Button defaultButton="true" layoutX="26.0" layoutY="682.0" mnemonicParsing="false" onAction="#newBook" prefHeight="35.0" prefWidth="219.0" styleClass="btn-round-blue" stylesheets="@assets/style.css" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button defaultButton="true" layoutX="255.0" layoutY="682.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="127.0" styleClass="btn-round-white" stylesheets="@assets/style.css" text="Voltar">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

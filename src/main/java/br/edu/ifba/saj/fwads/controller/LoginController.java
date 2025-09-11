@@ -37,7 +37,7 @@ public class LoginController {
             new Alert(AlertType.ERROR, e.getMessage()).showAndWait();
         } catch (Exception e){
             e.printStackTrace();
-            new Alert(AlertType.ERROR, "Erro inesperado, favor entra em contato com a equipe de desenvolvimento").showAndWait();
+            new Alert(AlertType.ERROR, "Erro inesperado, favor entra em contato com a equipe de desenvolvimento SUS").showAndWait();
         }
     }
 

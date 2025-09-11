@@ -104,6 +104,26 @@
 
 }
 
+.btn-rec-white {
+
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border-color: rgb(140, 140, 140);
+    -fx-border-radius: 10px;
+}
+
+.btn-rec-white:hover{
+    -fx-background-color: rgb(225, 228, 234);
+    -fx-border-color: rgb(140, 140, 140);
+    -fx-border-radius: 10px;
+}
+
+.btn-rec-white:pressed{
+    -fx-background-radius: 1000px;
+    -fx-background-color: rgb(225, 228, 234);
+    -fx-border-color: rgb(140, 140, 140);
+    -fx-border-radius: 10px;
+}
+
 .btn-clear-white {
 
     -fx-background-color: rgb(255, 255, 255);

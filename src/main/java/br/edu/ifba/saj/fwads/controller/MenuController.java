@@ -19,33 +19,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
 public class MenuController {
-
-    @FXML
-    private Button menuItemCadAutor;
-
-    @FXML
-    private Button menuItemCadLivro;
-
-    @FXML
-    private Button menuItemHome;
-
-    @FXML
-    private Button menuItemListAutor;
-
-    @FXML
-    private Button menuItemListLivro;
-
     @FXML
     private BorderPane masterPane;
 
     @FXML
     private VBox menu;
-
-    @FXML
-    private Label userEmail;
-
-    @FXML
-    private Circle userPicture;
 
     private Member currentUser;
 
@@ -131,7 +109,21 @@ public class MenuController {
         return null;
     }
 
-    private void setEmail(String email) {
-        userEmail.setText(email);
+    @FXML
+    void showOpenMeetings(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    void createMeeting(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    void createBook(ActionEvent actionEvent) {
+        limparBotoes(actionEvent.getSource());
+        showFXMLFile("CreateBook.fxml");
+    }
+
+    @FXML
+    void showUserMeetings(ActionEvent actionEvent) {
     }
 }

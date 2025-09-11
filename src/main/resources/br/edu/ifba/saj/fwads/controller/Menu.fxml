@@ -30,7 +30,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="menuItemCadAutor" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCadAutor" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Cadastro Autores" textFill="#012e40">
+            <Button fx:id="menuItemOpenMeetings" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showOpenMeetings" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Participar" textFill="#012e40">
                <padding>
                   <Insets left="10.0" />
                </padding>
@@ -45,7 +45,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemCadLivro" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCadLivro" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Cadastro Livros" textFill="#012e40">
+            <Button fx:id="menuItemNewMeeting" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createMeeting" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Agendar" textFill="#012e40">
                <padding>
                   <Insets bottom="5.0" left="10.0" />
                </padding>
@@ -60,7 +60,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemListAutor" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showListAutor" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Listar Autores" textFill="#012e40">
+            <Button fx:id="menuItemNewBook" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createBook" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Novo livro" textFill="#012e40">
                <padding>
                   <Insets bottom="5.0" left="10.0" />
                </padding>
@@ -75,7 +75,19 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemListLivro" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showListLivro" prefHeight="81.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Listar Livros" textFill="#012e40">
+            <Button fx:id="menuItemUserMeetings" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showUserMeetings" prefHeight="81.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Meus encontros" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="33.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/my-meetings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="menuItemLogOff" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logOff" prefHeight="81.0" prefWidth="308.0" styleClass="btn-rec-white" stylesheets="@assets/style.css" text="Sair" textFill="#012e40">
                <font>
                   <Font name="Archivo Regular" size="33.0" />
                </font>

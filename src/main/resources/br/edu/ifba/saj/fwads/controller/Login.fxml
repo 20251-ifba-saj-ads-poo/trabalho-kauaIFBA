@@ -30,7 +30,7 @@
                   <Font name="Archivo Regular" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txUsuario" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui seu CPF" styleClass="field-round-white" stylesheets="@assets/style.css" />
+            <TextField fx:id="txUsuario" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui seu CPF" styleClass="field-round-white" stylesheets="@assets/style.css" text="12345678901" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="200.0" prefHeight="96.0" prefWidth="360.0" AnchorPane.leftAnchor="23.0">
@@ -40,7 +40,7 @@
                   <Font name="Archivo Regular" size="16.0" />
                </font>
             </Label>
-            <PasswordField fx:id="txSenha" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui sua senha" styleClass="field-round-white" stylesheets="@assets/style.css" />
+            <PasswordField fx:id="txSenha" layoutY="36.0" prefHeight="35.0" prefWidth="360.0" promptText="Insira aqui sua senha" styleClass="field-round-white" stylesheets="@assets/style.css" text="admin" />
          </children>
       </AnchorPane>
     <Button layoutX="43.0" layoutY="358.0" mnemonicParsing="false" onAction="#newAccount" prefHeight="29.0" prefWidth="322.0" styleClass="btn-clear-white" text="Ainda não possui uma conta? clique aqui!" textFill="#012e40">

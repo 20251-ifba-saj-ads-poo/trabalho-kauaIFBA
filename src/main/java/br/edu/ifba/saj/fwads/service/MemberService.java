@@ -45,6 +45,7 @@ public class MemberService extends Service<Member> {
             throw new IncorretFormatException(allErrors);
         }
 
+        // findByMap retorna uma lista, se após a busca a lista não está vazia, significa que ele encontrou um membro com aquele CPF.
         if(!findByMap(Map.of("cpf", cpf)).isEmpty()){
             throw new CpfUniquenessException("Já existe uma conta vinculada à este CPF.");
         }
