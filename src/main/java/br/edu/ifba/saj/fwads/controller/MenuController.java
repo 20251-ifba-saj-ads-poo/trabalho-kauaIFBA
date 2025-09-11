@@ -115,6 +115,10 @@ public class MenuController {
 
     @FXML
     void createMeeting(ActionEvent actionEvent) {
+        limparBotoes(actionEvent.getSource());
+        showFXMLFile("CreateMeeting.fxml");
+        CreateMeetingController controller = (CreateMeetingController) App.getController(); // ISSO AQUI PRECISA SUBIR, MAS NÃO ESTA FUNCIONANDO
+        controller.setCurrentUser(currentUser);
     }
 
     @FXML

@@ -1,0 +1,1 @@
+MERGE INTO Book (id, title, author, genre, synopsis, publisher, publicationYear) KEY(title, author) VALUES (RANDOM_UUID(), 'A Revolta de Atlas', 'Ayn Rand', 'Ficção Filosófica', 'A história de uma sociedade em colapso', 'Atlas Books', '2008-11-11');

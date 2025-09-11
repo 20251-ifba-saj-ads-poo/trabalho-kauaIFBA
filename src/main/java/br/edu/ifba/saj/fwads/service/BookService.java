@@ -50,7 +50,6 @@ public class BookService  extends Service<Book> {
             throw new BookUniquinessException("Este livro já existe.");
         }
 
-        // if(publicationYear.isBefore(LocalDate.now()) <- usar esse código quando formos cadastrar o encontro :)
         Book newBook = new Book(title, author, genre, synopsis, publisher, publicationYear);
         return newBook;
     }

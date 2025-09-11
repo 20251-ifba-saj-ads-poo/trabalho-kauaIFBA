@@ -1,0 +1,43 @@
+package br.edu.ifba.saj.fwads.service;
+
+import br.edu.ifba.saj.fwads.exception.BookUniquinessException;
+import br.edu.ifba.saj.fwads.exception.ImpossibleTimeTravel;
+import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
+import br.edu.ifba.saj.fwads.model.Book;
+import br.edu.ifba.saj.fwads.model.Meeting;
+import br.edu.ifba.saj.fwads.model.Member;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MeetingService extends Service<Meeting>{
+    public MeetingService() {
+        super(Meeting.class);
+    }
+
+    public Meeting create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
+        List<String> errors = new ArrayList<>();
+
+        if(book == null){
+            errors.add("Selecione um livro.");
+        }
+
+        if(date == null){
+            errors.add("Selecione uma data para o encontro.");
+        }
+
+        if(!errors.isEmpty()){
+            String allErrors = String.join("\n", errors);
+            throw new IncorretFormatException(allErrors);
+        }
+
+        if(date.isBefore(LocalDate.now())){
+            throw new ImpossibleTimeTravel("Impossível agendar para esta data.");
+        }
+
+        Meeting newMeeting = new Meeting(date, book, host);
+        return newMeeting;
+    }
+
+}

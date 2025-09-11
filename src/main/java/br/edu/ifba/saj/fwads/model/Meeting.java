@@ -34,7 +34,7 @@ public class Meeting extends AbstractEntity{
     @Size(min = 5)
     private String minutes;
 
-    public Meeting(LocalDate date, Book book, Member host) {
+    public Meeting(@NotBlank LocalDate date, Book book, Member host) {
         this.date = date;
         this.book = book;
         this.host = host;
