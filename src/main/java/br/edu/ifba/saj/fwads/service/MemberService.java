@@ -39,7 +39,7 @@ public class MemberService extends Service<Member> {
     public String howManyUserMeetings(Member user){
         int count = 0;
 
-        for(Meeting meeting : user.getSubscribedMeetings()){
+        for(Meeting meeting : user.getMyMeetings()){
             count++;
         }
 

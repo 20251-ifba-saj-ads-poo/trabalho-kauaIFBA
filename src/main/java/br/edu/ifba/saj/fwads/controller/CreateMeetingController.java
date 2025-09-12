@@ -77,6 +77,7 @@ public class CreateMeetingController {
         try{
             Meeting newMeeting = meetingService.create(dpDate.getValue(), slBook.getSelectionModel().getSelectedItem(), currentUser);
             memberService.update(currentUser).addUserMeeting(newMeeting);
+
             new Alert(Alert.AlertType.CONFIRMATION, "Encontro do livro " + slBook.getSelectionModel().getSelectedItem().getTitle() + " agendado com sucesso para a data " + dpDate.getValue()).showAndWait();
             clear();
         } catch (IncorretFormatException e) {
