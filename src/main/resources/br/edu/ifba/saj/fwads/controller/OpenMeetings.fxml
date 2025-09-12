@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="750.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.OpenMeetingsController">
+   <children>
+      <Label alignment="TOP_LEFT" layoutX="24.0" layoutY="260.0" prefHeight="72.0" prefWidth="386.0" text="Participe de um encontro" textFill="#012e40">
+         <font>
+            <Font name="Archivo SemiBold" size="32.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="24.0" layoutY="332.0" prefHeight="80.0" prefWidth="360.0">
+         <children>
+            <Label layoutY="-4.0" prefHeight="40.0" prefWidth="360.0" text="Selecione o encontro" textFill="#012e40">
+               <font>
+                  <Font name="Archivo Regular" size="16.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="slOpenMeetings" layoutY="41.0" prefHeight="35.0" prefWidth="360.0" styleClass="field-round-white" stylesheets="@assets/style.css" />
+         </children>
+      </AnchorPane>
+      <Button defaultButton="true" layoutX="24.0" layoutY="422.0" mnemonicParsing="false" onAction="#subscribe" prefHeight="35.0" prefWidth="219.0" styleClass="btn-round-blue" stylesheets="@assets/style.css" text="Participar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button defaultButton="true" layoutX="256.0" layoutY="421.0" mnemonicParsing="false" onAction="#seeMore" prefHeight="35.0" prefWidth="127.0" styleClass="btn-round-white" stylesheets="@assets/style.css" text="Ver mais">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,4 +1,3 @@
-//MERGE INTO Member (id, name, cpf, password) KEY(cpf) VALUES(RANDOM_UUID(), 'admin', '00000000000', 'admin')
 package br.edu.ifba.saj.fwads.controller;
 
 import br.edu.ifba.saj.fwads.App;

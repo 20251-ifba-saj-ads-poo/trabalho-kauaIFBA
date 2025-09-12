@@ -100,8 +100,8 @@ public class MenuController {
     }
 
     @FXML
-    void showHome(ActionEvent event) {
-        limparBotoes(event.getSource());
+    void showHome(ActionEvent actionEvent) {
+        limparBotoes(actionEvent.getSource());
         HomeController controller = (HomeController) showFXMLFile("Home.fxml"); // ESSA LINHA DE CÓDIGO PASSA O CONTROLLER DAQUI PARA LÁ, PRECISO PARA ACESSAR O SETCURRENTUSER
         controller.setMenuController(this);
         controller.setCurrentUser(currentUser);
@@ -109,6 +109,10 @@ public class MenuController {
 
     @FXML
     void showOpenMeetings(ActionEvent actionEvent) {
+        limparBotoes(actionEvent.getSource());
+        OpenMeetingsController controller = (OpenMeetingsController) showFXMLFile("OpenMeetings.fxml"); // ESSA LINHA DE CÓDIGO PASSA O CONTROLLER DAQUI PARA LÁ, PRECISO PARA ACESSAR O SETCURRENTUSER
+        controller.setMenuController(this);
+        controller.setCurrentUser(currentUser);
     }
 
     @FXML

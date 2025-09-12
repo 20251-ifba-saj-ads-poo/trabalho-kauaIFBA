@@ -69,6 +69,10 @@ public class Member extends AbstractEntity{
     public void setSubscribedMeetings(List<Meeting> subscribedMeetings) { this.subscribedMeetings = subscribedMeetings; }
     public void setMyMeetings(List<Meeting> myMeetings) {this.myMeetings = myMeetings;}
 
+    public void addSubscribedMeeting(Meeting meeting) {
+        this.subscribedMeetings.add(meeting);
+    }
+
     public void addAttendedMeeting(Meeting meeting) {
         if (meeting != null && !attendedMeetings.contains(meeting)) {
             attendedMeetings.add(meeting);

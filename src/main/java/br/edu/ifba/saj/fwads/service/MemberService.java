@@ -3,6 +3,7 @@ package br.edu.ifba.saj.fwads.service;
 import br.edu.ifba.saj.fwads.exception.CpfUniquenessException;
 import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
 import br.edu.ifba.saj.fwads.exception.LoginInvalidoException;
+import br.edu.ifba.saj.fwads.exception.UserAlreadySubscribed;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 
@@ -23,6 +24,12 @@ public class MemberService extends Service<Member> {
         } catch (NoSuchElementException e) {
             throw new LoginInvalidoException(
                     "Não foi possível localizar o usuário com o cpf '" + cpf + "', ou a senha esta incorreta.");
+        }
+    }
+
+    public void subscribe(Meeting meeting, Member user) throws UserAlreadySubscribed {
+        if (meeting == null || user.getSubscribedMeetings().contains(meeting)) {
+            throw new UserAlreadySubscribed("Você já se inscreveu neste encontro ou é um moderador!");
         }
     }
 
@@ -73,7 +80,6 @@ public class MemberService extends Service<Member> {
         }
 
         Member newUser = new Member(name, cpf, senha);
-
 
         return create(newUser);
     }
