@@ -25,6 +25,7 @@ public class MemberService extends Service<Member> {
         }
     }
 
+    // VALIDAÇÃO DE CRIAÇÃO DE MEMBRO
     public Member create(String name, String cpf, String senha) throws CpfUniquenessException, IncorretFormatException {
         List<String> errors = new ArrayList<>();
 

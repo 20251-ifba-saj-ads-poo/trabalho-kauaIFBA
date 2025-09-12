@@ -42,13 +42,6 @@ public class MenuController {
     }
 
     @FXML
-    void showHome(ActionEvent event) {
-        limparBotoes(event.getSource());
-        masterPane.setCenter(new Pane());
-
-    }
-
-    @FXML
     void showUsuarios(ActionEvent event) {
         limparBotoes(event.getSource());
         masterPane.setCenter(new Pane());
@@ -110,14 +103,22 @@ public class MenuController {
     }
 
     @FXML
+    void showHome(ActionEvent event) {
+        limparBotoes(event.getSource());
+        HomeController controller = (HomeController) showFXMLFile("Home.fxml"); // ESSA LINHA DE CÓDIGO PASSA O CONTROLLER DAQUI PARA LÁ, PRECISO PARA ACESSAR O SETCURRENTUSER
+        controller.setMenuController(this);
+        controller.setCurrentUser(currentUser);
+    }
+
+    @FXML
     void showOpenMeetings(ActionEvent actionEvent) {
     }
 
     @FXML
     void createMeeting(ActionEvent actionEvent) {
         limparBotoes(actionEvent.getSource());
-        showFXMLFile("CreateMeeting.fxml");
-        CreateMeetingController controller = (CreateMeetingController) App.getController(); // ISSO AQUI PRECISA SUBIR, MAS NÃO ESTA FUNCIONANDO
+        CreateMeetingController controller = (CreateMeetingController) showFXMLFile("CreateMeeting.fxml"); // ESSA LINHA DE CÓDIGO PASSA O CONTROLLER DAQUI PARA LÁ, PRECISO PARA ACESSAR O SETCURRENTUSER
+        controller.setMenuController(this);
         controller.setCurrentUser(currentUser);
     }
 

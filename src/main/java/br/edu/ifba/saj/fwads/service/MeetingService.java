@@ -10,13 +10,27 @@ import br.edu.ifba.saj.fwads.model.Member;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MeetingService extends Service<Meeting>{
+
     public MeetingService() {
         super(Meeting.class);
     }
 
-    public Meeting create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
+    public String howManyOpenMeetings(){
+        List<Meeting> allOpenMeetings = findAll();
+        int count = 0;
+
+        for(Meeting meeting : allOpenMeetings){
+            count++;
+        }
+
+        return String.valueOf(count);
+
+    }
+
+    public void create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
         List<String> errors = new ArrayList<>();
 
         if(book == null){
@@ -36,8 +50,9 @@ public class MeetingService extends Service<Meeting>{
             throw new ImpossibleTimeTravel("Impossível agendar para esta data.");
         }
 
-        
-        return create(new Meeting(date, book, host));
+        Meeting newMeeting = new Meeting(date, book, host);
+
+        create(newMeeting);
     }
 
 }

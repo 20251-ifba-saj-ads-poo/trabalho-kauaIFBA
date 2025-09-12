@@ -9,17 +9,16 @@ import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.service.BookService;
 import br.edu.ifba.saj.fwads.service.MeetingService;
-import br.edu.ifba.saj.fwads.service.Service;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.util.StringConverter;
+
+import java.time.LocalDate;
 
 public class CreateMeetingController {
 
@@ -30,13 +29,19 @@ public class CreateMeetingController {
     @FXML
     private DatePicker dpDate;
 
+    private MenuController menuController;
+
     private BookService bookService = new BookService();
     private MeetingService meetingService = new MeetingService();
 
     private Member currentUser;
 
-    public void setCurrentUser(Member currentUser) {
-        this.currentUser = currentUser;
+    public void setMenuController(MenuController menuController) {
+        this.menuController = menuController;
+    }
+
+    public void setCurrentUser(Member user) {
+        currentUser = user;
     }
 
     @FXML
@@ -71,7 +76,9 @@ public class CreateMeetingController {
     void newMeeting(ActionEvent event) {
 
         try{
-            Meeting newMeeting = meetingService.create(dpDate.getValue(), slBook.getSelectionModel().getSelectedItem(), currentUser);
+            meetingService.create(dpDate.getValue(), slBook.getSelectionModel().getSelectedItem(), currentUser);
+            new Alert(Alert.AlertType.CONFIRMATION, "Encontro do livro " + slBook.getSelectionModel().getSelectedItem().getTitle() + " agendado com sucesso para a data " + dpDate.getValue()).showAndWait();
+            clear();
         } catch (IncorretFormatException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
         } catch (ImpossibleTimeTravel e) {
@@ -90,5 +97,11 @@ public class CreateMeetingController {
     @FXML
     void cancel(ActionEvent event) {
         App.setRoot("controller/Menu.fxml");
+    }
+
+    @FXML
+    private void clear() {
+        slBook.getSelectionModel().clearSelection();
+        dpDate.setValue(null);
     }
 }
