@@ -1,7 +1,6 @@
 package br.edu.ifba.saj.fwads.controller;
 
 import br.edu.ifba.saj.fwads.App;
-import br.edu.ifba.saj.fwads.model.Autor;
 import br.edu.ifba.saj.fwads.model.Livro;
 import br.edu.ifba.saj.fwads.service.Service;
 import javafx.collections.FXCollections;

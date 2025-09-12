@@ -30,7 +30,7 @@ public class MeetingService extends Service<Meeting>{
 
     }
 
-    public void create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
+    public Meeting create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
         List<String> errors = new ArrayList<>();
 
         if(book == null){
@@ -51,8 +51,7 @@ public class MeetingService extends Service<Meeting>{
         }
 
         Meeting newMeeting = new Meeting(date, book, host);
-
-        create(newMeeting);
+        return this.create(newMeeting);
     }
 
 }

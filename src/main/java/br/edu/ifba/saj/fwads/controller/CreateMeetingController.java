@@ -3,12 +3,12 @@ package br.edu.ifba.saj.fwads.controller;
 import br.edu.ifba.saj.fwads.App;
 import br.edu.ifba.saj.fwads.exception.ImpossibleTimeTravel;
 import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
-import br.edu.ifba.saj.fwads.model.Autor;
 import br.edu.ifba.saj.fwads.model.Book;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.service.BookService;
 import br.edu.ifba.saj.fwads.service.MeetingService;
+import br.edu.ifba.saj.fwads.service.MemberService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,8 +17,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
-
-import java.time.LocalDate;
 
 public class CreateMeetingController {
 
@@ -33,6 +31,7 @@ public class CreateMeetingController {
 
     private BookService bookService = new BookService();
     private MeetingService meetingService = new MeetingService();
+    private MemberService memberService = new MemberService();
 
     private Member currentUser;
 
@@ -76,7 +75,8 @@ public class CreateMeetingController {
     void newMeeting(ActionEvent event) {
 
         try{
-            meetingService.create(dpDate.getValue(), slBook.getSelectionModel().getSelectedItem(), currentUser);
+            Meeting newMeeting = meetingService.create(dpDate.getValue(), slBook.getSelectionModel().getSelectedItem(), currentUser);
+            memberService.update(currentUser).addUserMeeting(newMeeting);
             new Alert(Alert.AlertType.CONFIRMATION, "Encontro do livro " + slBook.getSelectionModel().getSelectedItem().getTitle() + " agendado com sucesso para a data " + dpDate.getValue()).showAndWait();
             clear();
         } catch (IncorretFormatException e) {
