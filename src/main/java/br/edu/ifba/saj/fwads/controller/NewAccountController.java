@@ -26,8 +26,7 @@ public class NewAccountController {
     void newAccount(ActionEvent event) {
         try {
 
-            memberService.create(txName.getText(),txCpf.getText(), txPassword.getText());
-            Member newUser = new Member(txName.getText(), txCpf.getText(), txPassword.getText());
+            Member newUser = memberService.create(txName.getText(),txCpf.getText(), txPassword.getText());
 
             new Alert(Alert.AlertType.CONFIRMATION, "Conta criada com sucesso! Acessando como usuário " + newUser.getName()).showAndWait();
 

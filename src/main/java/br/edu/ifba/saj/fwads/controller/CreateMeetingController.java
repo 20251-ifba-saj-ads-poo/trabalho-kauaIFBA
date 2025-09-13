@@ -58,7 +58,7 @@ public class CreateMeetingController {
             public Book fromString(String stringBook) {
                 return bookService.findAll()
                         .stream()
-                        .filter(obj -> stringBook.equals(obj.getTitle() + " | "  + obj.getPublisher()))
+                        .filter(book -> stringBook.equals(book.getTitle() + " | "  + book.getPublisher()))
                         .findAny()
                         .orElse(null);
             }
@@ -76,8 +76,9 @@ public class CreateMeetingController {
 
         try{
             Meeting newMeeting = meetingService.create(dpDate.getValue(), slBook.getSelectionModel().getSelectedItem(), currentUser);
-            memberService.update(currentUser).addUserMeeting(newMeeting);
-            //memberService.update(currentUser).addSubscribedMeeting(newMeeting);
+            currentUser.addUserMeeting(newMeeting);
+            //currentUser.addSubscribedMeeting(newMeeting);
+            memberService.update(currentUser);
 
             new Alert(Alert.AlertType.CONFIRMATION, "Encontro do livro " + slBook.getSelectionModel().getSelectedItem().getTitle() + " agendado com sucesso para a data " + dpDate.getValue()).showAndWait();
             clear();
@@ -103,7 +104,7 @@ public class CreateMeetingController {
 
     @FXML
     private void clear() {
-        slBook.getSelectionModel().clearSelection();
+        slBook.setValue(null);
         dpDate.setValue(null);
     }
 }

@@ -50,6 +50,6 @@ public class BookService  extends Service<Book> {
         }
 
         Book newBook = new Book(title, author, genre, synopsis, publisher, publicationYear);
-        return this.create(newBook);
+        return create(newBook);
     }
 }

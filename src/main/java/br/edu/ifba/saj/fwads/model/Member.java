@@ -44,9 +44,9 @@ public class Member extends AbstractEntity{
         this.name = name;
         this.cpf = cpf;
         this.password = password;
-        this.attendedMeetings = null;
-        this.subscribedMeetings = null;
-        this.myMeetings = null;
+        this.attendedMeetings = new ArrayList<>();
+        this.subscribedMeetings = new ArrayList<>();
+        this.myMeetings = new ArrayList<>();
     }
 
     public Member() {
@@ -70,7 +70,9 @@ public class Member extends AbstractEntity{
     public void setMyMeetings(List<Meeting> myMeetings) {this.myMeetings = myMeetings;}
 
     public void addSubscribedMeeting(Meeting meeting) {
-        this.subscribedMeetings.add(meeting);
+        if (meeting != null) {
+            this.subscribedMeetings.add(meeting);
+        }
     }
 
     public void addAttendedMeeting(Meeting meeting) {
@@ -80,8 +82,8 @@ public class Member extends AbstractEntity{
     }
 
     public void addUserMeeting(Meeting meeting) {
-        if (meeting != null && !myMeetings.contains(meeting)) {
-            myMeetings.add(meeting);
+        if (meeting != null) {
+            this.myMeetings.add(meeting);
         }
     }
 
@@ -93,6 +95,7 @@ public class Member extends AbstractEntity{
                 ", password='" + password + '\'' +
                 ", attendedMeetings=" + attendedMeetings +
                 ", subscribedMeetings=" + subscribedMeetings +
+                ", myMeetings=" + myMeetings +
                 '}';
     }
 }

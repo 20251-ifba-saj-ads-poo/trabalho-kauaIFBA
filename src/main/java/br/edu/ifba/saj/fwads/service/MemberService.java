@@ -81,6 +81,6 @@ public class MemberService extends Service<Member> {
 
         Member newUser = new Member(name, cpf, senha);
 
-        return create(newUser);
+        return this.create(newUser);
     }
 }
