@@ -1,5 +1,6 @@
 package br.edu.ifba.saj.fwads.controller;
 
+import br.edu.ifba.saj.fwads.exception.UserIsNull;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.service.MeetingService;
@@ -7,6 +8,7 @@ import br.edu.ifba.saj.fwads.service.MemberService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,12 +33,12 @@ public class UserMeetingsController {
     @FXML
     private TableView<Meeting> tblMeetings;
 
-    private Member currentUser;
-
     private MenuController menuController;
 
     private MeetingService meetingService = new MeetingService();
     private MemberService memberService = new MemberService();
+
+    private Member currentUser;
 
     public void setMenuController(MenuController menuController) {
         this.menuController = menuController;
@@ -44,7 +46,9 @@ public class UserMeetingsController {
 
     public void setCurrentUser(Member user) {
         currentUser = user;
+        loadMeetingList();
     }
+
     @FXML
     public void initialize() {
         clnBook.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getBook().getTitle()));
@@ -53,11 +57,13 @@ public class UserMeetingsController {
         clnSubs.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSubscribedMembers().stream().map(Member::getName).collect(Collectors.joining(", "))));
 
         clnDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateAndTime().toString()));
-        loadMeetingList();
     }
 
     public void loadMeetingList(){
-        tblMeetings.setItems(FXCollections.observableList(meetingService.findAll()));
-        tblMeetings.setItems(FXCollections.observableList(memberService.returnUserMeetings(currentUser)));
+        try {
+            tblMeetings.setItems(FXCollections.observableList(memberService.returnUserMeetings(currentUser)));
+        } catch (UserIsNull e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
+        }
     }
 }

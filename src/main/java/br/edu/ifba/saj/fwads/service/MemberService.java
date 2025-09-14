@@ -1,9 +1,6 @@
 package br.edu.ifba.saj.fwads.service;
 
-import br.edu.ifba.saj.fwads.exception.CpfUniquenessException;
-import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
-import br.edu.ifba.saj.fwads.exception.LoginInvalidoException;
-import br.edu.ifba.saj.fwads.exception.UserAlreadySubscribed;
+import br.edu.ifba.saj.fwads.exception.*;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 
@@ -33,7 +30,10 @@ public class MemberService extends Service<Member> {
         }
     }
 
-    public List<Meeting> returnUserMeetings(Member user) {
+    public List<Meeting> returnUserMeetings(Member user) throws UserIsNull {
+        if(user == null){
+            throw new UserIsNull("Ocorreu um erro.");
+        }
         return user.getSubscribedMeetings();
     }
 
