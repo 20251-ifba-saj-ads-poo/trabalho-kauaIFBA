@@ -30,6 +30,32 @@ public class MeetingService extends Service<Meeting>{
 
     }
 
+    public void updateMeeting(LocalDate newDate, Book newBook, Meeting meeting) throws IncorretFormatException, ImpossibleTimeTravel {
+        List<String> errors = new ArrayList<>();
+
+        if(newBook == null){
+            errors.add("Selecione um livro.");
+        }
+
+        if(newDate == null){
+            errors.add("Selecione uma data para o encontro.");
+        }
+
+        if(!errors.isEmpty()){
+            String allErrors = String.join("\n", errors);
+            throw new IncorretFormatException(allErrors);
+        }
+
+        if(newDate.isBefore(LocalDate.now())){
+            throw new ImpossibleTimeTravel("Impossível agendar para esta data.");
+        }
+
+        meeting.setBook(newBook);
+        meeting.setDateAndTime(newDate);
+
+        update(meeting);
+    }
+
     public Meeting create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
         List<String> errors = new ArrayList<>();
 

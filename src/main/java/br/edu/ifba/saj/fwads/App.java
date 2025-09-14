@@ -23,6 +23,8 @@ public class App extends Application {
         stage.show();
     }
 
+    
+
     public static Object getController() {
         return loader.getController();
     }

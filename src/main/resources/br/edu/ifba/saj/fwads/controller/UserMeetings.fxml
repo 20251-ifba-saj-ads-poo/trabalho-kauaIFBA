@@ -10,7 +10,7 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="394.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.UserMeetingsController">
    <center>
-      <TableView fx:id="tblMeetings" prefHeight="352.0" prefWidth="795.0">
+      <TableView fx:id="tblMeetings" prefHeight="352.0" prefWidth="675.0">
          <columns>
             <TableColumn fx:id="clnBook" editable="false" minWidth="-1.0" prefWidth="352.0" text="Livro" />
             <TableColumn fx:id="clnHost" editable="false" minWidth="-1.0" prefWidth="184.0" text="Moderador" />
@@ -22,7 +22,7 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" styleClass="main" stylesheets="@assets/style.css" BorderPane.alignment="CENTER">
          <buttons>
-            <Button mnemonicParsing="false" styleClass="btn-round-blue" stylesheets="@assets/style.css" text="Editar" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#showEdit" styleClass="btn-round-blue" stylesheets="@assets/style.css" text="Editar" textFill="WHITE">
                <font>
                   <Font name="Archivo Regular" size="12.0" />
                </font></Button>
