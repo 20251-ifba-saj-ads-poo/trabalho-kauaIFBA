@@ -87,7 +87,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemLogOff" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logOff" prefHeight="81.0" prefWidth="308.0" styleClass="btn-rec-white" stylesheets="@assets/style.css" text="Sair" textFill="#012e40">
+            <Button fx:id="menuItemLogOff" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#logOff" prefHeight="81.0" prefWidth="308.0" styleClass="btn-rec-white" stylesheets="@assets/style.css" text="Sair" textFill="#012e40">
                <font>
                   <Font name="Archivo Regular" size="33.0" />
                </font>

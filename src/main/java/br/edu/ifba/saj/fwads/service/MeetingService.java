@@ -51,6 +51,7 @@ public class MeetingService extends Service<Meeting>{
         }
 
         Meeting newMeeting = new Meeting(date, book, host);
+        newMeeting.addSubscribedMember(host);
         return create(newMeeting);
     }
 

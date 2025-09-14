@@ -1,9 +1,6 @@
 package br.edu.ifba.saj.fwads.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -30,9 +27,19 @@ public class Member extends AbstractEntity{
     private String password;
 
     @ManyToMany
+    @JoinTable(
+            name = "member_attended_meetings",
+            joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "meeting_id")
+    )
     private List<Meeting> attendedMeetings; // Encontros que participou
 
     @ManyToMany
+    @JoinTable(
+            name = "member_subscribed_meetings",
+            joinColumns = @JoinColumn(name = "member_id"),
+            inverseJoinColumns = @JoinColumn(name = "meeting_id")
+    )
     private List<Meeting> subscribedMeetings; // Encontros que está inscrito
 
     @OneToMany(mappedBy = "host")

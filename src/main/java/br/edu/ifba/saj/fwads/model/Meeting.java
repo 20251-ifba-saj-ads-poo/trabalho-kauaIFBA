@@ -66,18 +66,7 @@ public class Meeting extends AbstractEntity{
     public void setMinutes(String minutes) {this.minutes = minutes; }
 
     public void addSubscribedMember(Member subscribedMember) {
-        this.subscribedMembers.add(subscribedMember);
-    }
-
-    @Override
-    public String toString() {
-        return "Meeting{" +
-                "date=" + date +
-                ", book=" + book +
-                ", subscribedMembers=" + subscribedMembers +
-                ", attendedMembers=" + attendedMembers +
-                ", host=" + host +
-                ", minutes='" + minutes + '\'' +
-                '}';
-    }
+        if (subscribedMember != null) {
+            this.subscribedMembers.add(subscribedMember);
+        }    }
 }

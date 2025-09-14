@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import java.util.Map;
+
 public class NewAccountController {
     @FXML
     private TextField txName;
@@ -26,8 +28,9 @@ public class NewAccountController {
     void newAccount(ActionEvent event) {
         try {
 
-            Member newUser = memberService.create(txName.getText(),txCpf.getText(), txPassword.getText());
+            memberService.create(txName.getText(),txCpf.getText(), txPassword.getText());
 
+            Member newUser = memberService.findByMap(Map.of("cpf", txCpf.getText(), "password", txPassword.getText())).getFirst();
             new Alert(Alert.AlertType.CONFIRMATION, "Conta criada com sucesso! Acessando como usuário " + newUser.getName()).showAndWait();
 
             App.setRoot("controller/Menu.fxml");

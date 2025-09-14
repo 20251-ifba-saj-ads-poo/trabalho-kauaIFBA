@@ -68,13 +68,4 @@ public class Book extends AbstractEntity {
     public void setPublisher(String publisher) { this.publisher = publisher; }
     public void setPublicationYear(LocalDate publicationYear) { this.publicationYear = publicationYear; }
 
-    @Override
-    public String toString() {
-        return title +
-                "\nescrito por: " + author +
-                "\n" + genre +
-                "\n" + publisher +
-                "\npublicado em:" + publicationYear +
-                "\n" + synopsis;
-    }
 }
