@@ -131,5 +131,9 @@ public class MenuController {
 
     @FXML
     void showUserMeetings(ActionEvent actionEvent) {
+        limparBotoes(actionEvent.getSource());
+        UserMeetingsController controller = (UserMeetingsController) showFXMLFile("UserMeetings.fxml"); // ESSA LINHA DE CÓDIGO PASSA O CONTROLLER DAQUI PARA LÁ, PRECISO PARA ACESSAR O SETCURRENTUSER
+        controller.setMenuController(this);
+        controller.setCurrentUser(currentUser);
     }
 }

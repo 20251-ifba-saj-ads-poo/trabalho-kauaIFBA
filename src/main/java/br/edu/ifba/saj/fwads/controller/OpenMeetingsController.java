@@ -64,6 +64,8 @@ public class OpenMeetingsController {
         try{
             memberService.subscribe(slOpenMeetings.getSelectionModel().getSelectedItem(), currentUser);
             Meeting subMeeting = slOpenMeetings.getSelectionModel().getSelectedItem();
+            currentUser.addSubscribedMeeting(subMeeting);
+            memberService.update(currentUser);
             //memberService.update(currentUser).addSubscribedMeeting(subMeeting);
 
             new Alert(Alert.AlertType.CONFIRMATION, "Você se inscreveu no encontro do livro " + subMeeting.getBook().getTitle() + " ministrada por:  " + subMeeting.getHost().getName() + " que irá ocorrer em: " + subMeeting.getDateAndTime()).showAndWait();

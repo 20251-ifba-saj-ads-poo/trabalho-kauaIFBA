@@ -1,4 +1,63 @@
 package br.edu.ifba.saj.fwads.controller;
 
+import br.edu.ifba.saj.fwads.model.Meeting;
+import br.edu.ifba.saj.fwads.model.Member;
+import br.edu.ifba.saj.fwads.service.MeetingService;
+import br.edu.ifba.saj.fwads.service.MemberService;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserMeetingsController {
+    @FXML
+    private TableColumn<Meeting, String> clnBook;
+
+    @FXML
+    private TableColumn<Meeting, String> clnHost;
+
+    @FXML
+    private TableColumn<Meeting, String> clnDate;
+
+    @FXML
+    private TableColumn<Meeting, String> clnSubs;
+
+    @FXML
+    private TableView<Meeting> tblMeetings;
+
+    private Member currentUser;
+
+    private MenuController menuController;
+
+    private MeetingService meetingService = new MeetingService();
+    private MemberService memberService = new MemberService();
+
+    public void setMenuController(MenuController menuController) {
+        this.menuController = menuController;
+    }
+
+    public void setCurrentUser(Member user) {
+        currentUser = user;
+    }
+    @FXML
+    public void initialize() {
+        clnBook.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getBook().getTitle()));
+        clnHost.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHost().getName()));
+
+        clnSubs.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSubscribedMembers().stream().map(Member::getName).collect(Collectors.joining(", "))));
+
+        clnDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateAndTime().toString()));
+        loadMeetingList();
+    }
+
+    public void loadMeetingList(){
+        tblMeetings.setItems(FXCollections.observableList(meetingService.findAll()));
+        tblMeetings.setItems(FXCollections.observableList(memberService.returnUserMeetings(currentUser)));
+    }
 }

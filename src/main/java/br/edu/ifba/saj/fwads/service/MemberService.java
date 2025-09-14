@@ -33,6 +33,10 @@ public class MemberService extends Service<Member> {
         }
     }
 
+    public List<Meeting> returnUserMeetings(Member user) {
+        return user.getSubscribedMeetings();
+    }
+
     public String howManySubMeetings(Member user){
         int count = 0;
 
