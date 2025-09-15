@@ -1,7 +1,9 @@
 package br.edu.ifba.saj.fwads.controller;
 
 import br.edu.ifba.saj.fwads.App;
+import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
 import br.edu.ifba.saj.fwads.exception.UserIsNull;
+import br.edu.ifba.saj.fwads.exception.UserNotAuthorized;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.service.MeetingService;
@@ -69,16 +71,26 @@ public class UserMeetingsController {
     @FXML
     void showEdit(ActionEvent actionEvent) {
 
-        Stage stage = new Stage();
-        Scene scene = new Scene(App.loadFXML("controller/EditMeeting.fxml"), 715, 385);
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        EditMeetingController controller = (EditMeetingController) App.getController();
-        controller.setUserMeetingController(this);
-        controller.getMeeting(tblMeetings.getSelectionModel().getSelectedItem());
+        try{
+            meetingService.checkAuthorization(tblMeetings.getSelectionModel().getSelectedItem(), currentUser);
 
-        stage.showAndWait();
+            Stage stage = new Stage();
+            Scene scene = new Scene(App.loadFXML("controller/EditMeeting.fxml"), 715, 385);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            EditMeetingController controller = (EditMeetingController) App.getController();
+            controller.setUserMeetingController(this);
+            controller.getMeeting(tblMeetings.getSelectionModel().getSelectedItem());
 
+            stage.showAndWait();
+        } catch (UserNotAuthorized e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
+        } catch (IncorretFormatException e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Erro inesperado, favor entra em contato com a equipe de desenvolvimento").showAndWait();
+        }
     }
 
     public void loadMeetingList(){

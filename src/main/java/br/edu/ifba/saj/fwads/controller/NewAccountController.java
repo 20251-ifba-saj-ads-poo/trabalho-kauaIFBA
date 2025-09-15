@@ -29,13 +29,13 @@ public class NewAccountController {
         try {
 
             memberService.create(txName.getText(),txCpf.getText(), txPassword.getText());
+            Member user = memberService.validaLogin(txCpf.getText(), txPassword.getText());
 
-            Member newUser = memberService.findByMap(Map.of("cpf", txCpf.getText(), "password", txPassword.getText())).getFirst();
-            new Alert(Alert.AlertType.CONFIRMATION, "Conta criada com sucesso! Acessando como usuário " + newUser.getName()).showAndWait();
+            new Alert(Alert.AlertType.CONFIRMATION, "Conta criada com sucesso! Acessando como usuário " + user.getName()).showAndWait();
 
             App.setRoot("controller/Menu.fxml");
             MenuController controller = (MenuController) App.getController();
-            controller.setCurrentUser(newUser);
+            controller.setCurrentUser(user);
         } catch (IncorretFormatException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
         } catch (CpfUniquenessException e) {

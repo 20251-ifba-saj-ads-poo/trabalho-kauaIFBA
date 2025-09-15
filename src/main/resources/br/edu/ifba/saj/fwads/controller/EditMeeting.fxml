@@ -60,7 +60,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ListView layoutX="483.0" layoutY="93.0" prefHeight="238.0" prefWidth="200.0" />
+      <ListView fx:id="lvSubs" layoutX="483.0" layoutY="93.0" prefHeight="238.0" prefWidth="200.0" />
       <Label layoutX="483.0" layoutY="53.0" prefHeight="40.0" prefWidth="168.0" text="Inscritos" textFill="#012e40">
          <font>
             <Font name="Archivo Regular" size="16.0" />

@@ -3,6 +3,7 @@ package br.edu.ifba.saj.fwads.service;
 import br.edu.ifba.saj.fwads.exception.BookUniquinessException;
 import br.edu.ifba.saj.fwads.exception.ImpossibleTimeTravel;
 import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
+import br.edu.ifba.saj.fwads.exception.UserNotAuthorized;
 import br.edu.ifba.saj.fwads.model.Book;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
@@ -28,6 +29,16 @@ public class MeetingService extends Service<Meeting>{
 
         return String.valueOf(count);
 
+    }
+
+    public void checkAuthorization(Meeting meeting, Member host) throws UserNotAuthorized, IncorretFormatException {
+        if(meeting == null || host == null){
+            throw new IncorretFormatException("Selecione um encontro.");
+        }
+
+        if(!meeting.getHost().equals(host)){
+            throw new UserNotAuthorized("Você não tem autorização para acessar esta página.");
+        }
     }
 
     public void updateMeeting(LocalDate newDate, Book newBook, Meeting meeting) throws IncorretFormatException, ImpossibleTimeTravel {
@@ -77,7 +88,6 @@ public class MeetingService extends Service<Meeting>{
         }
 
         Meeting newMeeting = new Meeting(date, book, host);
-        newMeeting.addSubscribedMember(host);
         return create(newMeeting);
     }
 

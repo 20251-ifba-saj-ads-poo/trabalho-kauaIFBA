@@ -5,14 +5,13 @@ import br.edu.ifba.saj.fwads.exception.ImpossibleTimeTravel;
 import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
 import br.edu.ifba.saj.fwads.model.Book;
 import br.edu.ifba.saj.fwads.model.Meeting;
+import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.service.BookService;
 import br.edu.ifba.saj.fwads.service.MeetingService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
 public class EditMeetingController {
@@ -22,6 +21,9 @@ public class EditMeetingController {
 
     @FXML
     private DatePicker dpDate;
+
+    @FXML
+    private ListView<Member> lvSubs;
 
     private Meeting meeting;
 
@@ -77,6 +79,19 @@ public class EditMeetingController {
         });
 
         loadBookList();
+
+        lvSubs.setCellFactory(param -> new ListCell<Member>() {
+            @Override
+            protected void updateItem(Member member, boolean empty) {
+                super.updateItem(member, empty);
+                if (empty || member == null) {
+                    setText(null);
+                } else {
+                    setText(member.getName());
+                }
+            }
+        });
+
     }
 
     private void loadBookList() {
