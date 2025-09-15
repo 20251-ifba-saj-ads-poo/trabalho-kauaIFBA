@@ -11,7 +11,6 @@ public class StartController {
 
     @FXML
     private GridPane gridPane;
-
     @FXML
     private StackPane stackPane;
 

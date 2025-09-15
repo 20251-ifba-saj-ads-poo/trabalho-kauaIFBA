@@ -10,7 +10,7 @@
 
 <BorderPane fx:id="masterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="main" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.MenuController">
    <left>
-      <VBox fx:id="menu" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="1080.0" prefWidth="340.0" styleClass="field-round-white" stylesheets="@assets/style.css" BorderPane.alignment="TOP_LEFT">
+      <VBox fx:id="menu" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="1080.0" prefWidth="340.0" styleClass="field-round-white" stylesheets="@assets/style.css" BorderPane.alignment="TOP_LEFT">
          <children>
             <Button fx:id="menuItemHome" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showHome" prefHeight="80.0" styleClass="btn-clear-white" stylesheets="@assets/style.css" text="Home" textFill="#012e40">
                <padding>
@@ -87,17 +87,20 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="menuItemLogOff" graphicTextGap="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#logOff" prefHeight="81.0" prefWidth="308.0" styleClass="btn-rec-white" stylesheets="@assets/style.css" text="Sair" textFill="#012e40">
+            <Button fx:id="menuItemLogOff" alignment="CENTER" graphicTextGap="10.0" maxWidth="300.0" minWidth="100.0" mnemonicParsing="false" onMouseClicked="#logOff" prefHeight="33.0" prefWidth="100.0" styleClass="btn-rec-white" stylesheets="@assets/style.css" text="Sair" textFill="#012e40" VBox.vgrow="NEVER">
                <font>
                   <Font name="Archivo Regular" size="33.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@assets/my-meetings.png" />
+                        <Image url="@assets/log-out.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Button>
          </children></VBox>
    </left>

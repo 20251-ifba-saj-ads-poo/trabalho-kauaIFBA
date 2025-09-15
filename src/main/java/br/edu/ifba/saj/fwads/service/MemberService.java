@@ -15,6 +15,7 @@ public class MemberService extends Service<Member> {
         super(Member.class);
     }
 
+    // VALIDAÇÃO DE LOGIN
     public Member validaLogin(String cpf, String senha) throws LoginInvalidoException {
         try {
             return findByMap(Map.of("cpf", cpf, "password", senha)).getFirst();
@@ -24,12 +25,14 @@ public class MemberService extends Service<Member> {
         }
     }
 
+    // VALIDAÇÃO DE INSCRIÇÃO EM UM ENCONTRO
     public void subscribe(Meeting meeting, Member user) throws UserAlreadySubscribed {
         if (meeting == null || user.getSubscribedMeetings().contains(meeting)) {
             throw new UserAlreadySubscribed("Você já se inscreveu neste encontro ou é um moderador!");
         }
     }
 
+    // RETORNAR LISTA DE ENCONTROS DO USUÁRIO
     public List<Meeting> returnUserMeetings(Member user) throws UserIsNull {
         if(user == null){
             throw new UserIsNull("Ocorreu um erro.");
@@ -37,54 +40,46 @@ public class MemberService extends Service<Member> {
         return user.getSubscribedMeetings();
     }
 
+    // RETORNAR QUANTOS ENCONTROS O USUÁRIO ESTÁ INSCRITO (NÚMERO)
     public String howManySubMeetings(Member user){
         int count = 0;
-
         for(Meeting meeting : user.getSubscribedMeetings()){
             count++;
         }
-
         return String.valueOf(count);
     }
 
+    // RETORNAR QUANTOS ENCONTROS O USUÁRIO É MODERADOR (NÚMERO)
     public String howManyUserMeetings(Member user){
         int count = 0;
-
         for(Meeting meeting : user.getMyMeetings()){
             count++;
         }
-
         return String.valueOf(count);
     }
 
-    // VALIDAÇÃO DE CRIAÇÃO DE MEMBRO
+    // VALIDAÇÃO DE CRIAÇÃO DE NOVO USUÁRIO/MEMBRO
     public Member create(String name, String cpf, String senha) throws CpfUniquenessException, IncorretFormatException {
         List<String> errors = new ArrayList<>();
 
         if (cpf == null || cpf.length() != 11 || cpf.isBlank()) {
             errors.add("CPF inválido: deve ter 11 dígitos e não pode estar em branco.");
         }
-
         if (senha == null || senha.length() < 5 || senha.isBlank()) {
             errors.add("Senha inválida: deve ter no mínimo 5 caracteres e não pode estar em branco.");
         }
-
         if (name == null || name.length() < 5 || name.isBlank()) {
             errors.add("Nome inválido: deve ter no mínimo 5 caracteres e não pode estar em branco.");
         }
-
         if (!errors.isEmpty()) {
             String allErrors = String.join("\n", errors);
             throw new IncorretFormatException(allErrors);
         }
-
-        // findByMap retorna uma lista, se após a busca a lista não está vazia, significa que ele encontrou um membro com aquele CPF.
         if(!findByMap(Map.of("cpf", cpf)).isEmpty()){
             throw new CpfUniquenessException("Já existe uma conta vinculada à este CPF.");
         }
 
         Member newUser = new Member(name, cpf, senha);
-
         return this.create(newUser);
     }
 }

@@ -32,7 +32,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button defaultButton="true" layoutX="256.0" layoutY="421.0" mnemonicParsing="false" onAction="#seeMore" prefHeight="35.0" prefWidth="127.0" styleClass="btn-round-white" stylesheets="@assets/style.css" text="Ver mais">
+      <Button defaultButton="true" layoutX="256.0" layoutY="421.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="127.0" styleClass="btn-round-white" stylesheets="@assets/style.css" text="Voltar">
          <font>
             <Font size="16.0" />
          </font>

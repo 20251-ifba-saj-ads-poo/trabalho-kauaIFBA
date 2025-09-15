@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="660.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.HomeController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="660.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.saj.fwads.controller.HomeController">
    <children>
-      <AnchorPane layoutY="354.0" prefHeight="306.0" prefWidth="450.0" styleClass="btn-rec-white" stylesheets="@assets/style.css">
+      <AnchorPane layoutY="354.0" prefHeight="306.0" prefWidth="450.0" styleClass="btn-rec-non-press-white" stylesheets="@assets/style.css">
          <children>
             <Label fx:id="openMeetings" layoutX="48.0" layoutY="114.0" text="xx" textFill="#012e40">
                <font>
@@ -25,7 +25,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="632.0" layoutY="354.0" prefHeight="306.0" prefWidth="450.0" styleClass="btn-rec-white" stylesheets="@assets/style.css">
+      <AnchorPane layoutX="632.0" layoutY="354.0" prefHeight="306.0" prefWidth="450.0" styleClass="btn-rec-non-press-white" stylesheets="@assets/style.css">
          <children>
             <Label fx:id="userSubs" layoutX="48.0" layoutY="114.0" text="xx" textFill="#012e40">
                <font>
@@ -42,7 +42,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="632.0" prefHeight="306.0" prefWidth="450.0" styleClass="btn-rec-white" stylesheets="@assets/style.css">
+      <AnchorPane layoutX="632.0" prefHeight="306.0" prefWidth="450.0" styleClass="btn-rec-non-press-white" stylesheets="@assets/style.css">
          <children>
             <Label fx:id="userMeetings" layoutX="48.0" layoutY="114.0" text="xx" textFill="#012e40">
                <font>

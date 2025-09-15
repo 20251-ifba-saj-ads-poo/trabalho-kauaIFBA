@@ -15,16 +15,16 @@ import java.util.Map;
 
 public class LoginController {
 
-    @FXML // fx:id="txSenha"
+    @FXML
     private PasswordField txSenha;
-
-    @FXML // fx:id="txCpf"
+    @FXML
     private TextField txUsuario;
 
+    // Serviço
     private MemberService memberService = new MemberService();
 
     @FXML
-    void login(ActionEvent event) {
+    void login(ActionEvent actionEvent) {
         try {
             Member user = memberService.validaLogin(txUsuario.getText(), txSenha.getText());
 
@@ -43,7 +43,7 @@ public class LoginController {
     }
 
     @FXML
-    void newAccount(ActionEvent event) {
+    void newAccount(ActionEvent actionEvent) {
         StartController.creatingNewAccount = true;
         App.setRoot("controller/Start.fxml");
     }

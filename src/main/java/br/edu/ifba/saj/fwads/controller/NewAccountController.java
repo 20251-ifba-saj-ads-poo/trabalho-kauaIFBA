@@ -10,24 +10,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-import java.util.Map;
-
 public class NewAccountController {
+
     @FXML
     private TextField txName;
-
     @FXML
     private TextField txCpf;
-
     @FXML
     private TextField txPassword;
 
+    // Serviço
     private MemberService memberService = new MemberService();
 
     @FXML
     void newAccount(ActionEvent event) {
         try {
-
             memberService.create(txName.getText(),txCpf.getText(), txPassword.getText());
             Member user = memberService.validaLogin(txCpf.getText(), txPassword.getText());
 

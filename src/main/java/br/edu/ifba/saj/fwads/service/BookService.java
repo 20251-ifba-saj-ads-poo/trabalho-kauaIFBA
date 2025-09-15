@@ -15,8 +15,9 @@ public class BookService  extends Service<Book> {
     public BookService() {
         super(Book.class);
     }
+
+    // CRIA E VALIDA UM NOVO LIVRO
     public Book create(String title, String author, String genre, String synopsis, String publisher, LocalDate publicationYear) throws IncorretFormatException, BookUniquinessException {
-        // LIDAR COM ERRO DE PREENCHIMENTO
         List<String> errors = new ArrayList<>();
 
         if (title == null || title.length() < 5 || title.isBlank()) {
@@ -44,7 +45,6 @@ public class BookService  extends Service<Book> {
         }
 
         // LIDAR COM ERRO DE DUPLICIDADE (VAMOS CONSIDERAR UM LIVRO DUPLICADO, CASO TÍTULO, AUTOR, EDITORA E ANO DE PUBLICAÇÃO SEJAM IGUAIS)
-        // findByMap retorna uma lista, se após a busca a lista não está vazia, significa que ele encontrou um membro com aquele CPF.
         if(!findByMap(Map.of("title", title, "author", author, "publisher", publisher, "publicationYear", publicationYear)).isEmpty()){
             throw new BookUniquinessException("Este livro já existe.");
         }

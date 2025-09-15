@@ -1,6 +1,5 @@
 package br.edu.ifba.saj.fwads.service;
 
-import br.edu.ifba.saj.fwads.exception.BookUniquinessException;
 import br.edu.ifba.saj.fwads.exception.ImpossibleTimeTravel;
 import br.edu.ifba.saj.fwads.exception.IncorretFormatException;
 import br.edu.ifba.saj.fwads.exception.UserNotAuthorized;
@@ -11,7 +10,6 @@ import br.edu.ifba.saj.fwads.model.Member;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MeetingService extends Service<Meeting>{
 
@@ -19,18 +17,18 @@ public class MeetingService extends Service<Meeting>{
         super(Meeting.class);
     }
 
+    // RETORNA TODOS ENCONTROS ABERTOS
     public String howManyOpenMeetings(){
         List<Meeting> allOpenMeetings = findAll();
         int count = 0;
-
         for(Meeting meeting : allOpenMeetings){
             count++;
         }
-
         return String.valueOf(count);
 
     }
 
+    // VALIDA SE O USUÁRIO TEM ACESSO A TELA DE EDIÇÃO DAQUELE ENCONTRO
     public void checkAuthorization(Meeting meeting, Member host) throws UserNotAuthorized, IncorretFormatException {
         if(meeting == null || host == null){
             throw new IncorretFormatException("Selecione um encontro.");
@@ -41,6 +39,13 @@ public class MeetingService extends Service<Meeting>{
         }
     }
 
+    // ATUALIZA DADOS DAQUELE ENCONTRO
+    /*
+        Esse método realiza as mesmas validações de seleção de livro e data válidos, contudo
+        como estas validações estão escritas juntos ao método create, ocorreu redundância.
+        uma solução seria reformular o método create e remover estas validações dele, porém
+        como esta é a estrutura aplicada em todos services, optei por deixar deste modo.
+     */
     public void updateMeeting(LocalDate newDate, Book newBook, Meeting meeting) throws IncorretFormatException, ImpossibleTimeTravel {
         List<String> errors = new ArrayList<>();
 
@@ -63,26 +68,23 @@ public class MeetingService extends Service<Meeting>{
 
         meeting.setBook(newBook);
         meeting.setDateAndTime(newDate);
-
         update(meeting);
     }
 
+    // CRIA UM NOVO ENCONTRO E VALIDA
     public Meeting create(LocalDate date, Book book, Member host) throws IncorretFormatException, ImpossibleTimeTravel {
         List<String> errors = new ArrayList<>();
 
         if(book == null){
             errors.add("Selecione um livro.");
         }
-
         if(date == null){
             errors.add("Selecione uma data para o encontro.");
         }
-
         if(!errors.isEmpty()){
             String allErrors = String.join("\n", errors);
             throw new IncorretFormatException(allErrors);
         }
-
         if(date.isBefore(LocalDate.now())){
             throw new ImpossibleTimeTravel("Impossível agendar para esta data.");
         }
@@ -90,5 +92,4 @@ public class MeetingService extends Service<Meeting>{
         Meeting newMeeting = new Meeting(date, book, host);
         return create(newMeeting);
     }
-
 }

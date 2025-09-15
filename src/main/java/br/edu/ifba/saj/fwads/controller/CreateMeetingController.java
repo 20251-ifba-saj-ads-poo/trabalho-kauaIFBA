@@ -12,10 +12,13 @@ import br.edu.ifba.saj.fwads.service.MemberService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class CreateMeetingController {
@@ -32,7 +35,6 @@ public class CreateMeetingController {
     private BookService bookService = new BookService();
     private MeetingService meetingService = new MeetingService();
     private MemberService memberService = new MemberService();
-
     private Member currentUser;
 
     public void setMenuController(MenuController menuController) {
@@ -94,7 +96,13 @@ public class CreateMeetingController {
 
     @FXML
     void newBook(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        Scene scene = new Scene(App.loadFXML("controller/CreateBook.fxml"), 450, 750);
+        stage.setScene(scene);        stage.initModality(Modality.APPLICATION_MODAL);
+        CreateBookController controller = (CreateBookController) App.getController();
+        controller.setCreateMeetingController(this);
 
+        stage.showAndWait();
     }
 
     @FXML

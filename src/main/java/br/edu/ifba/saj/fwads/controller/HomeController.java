@@ -19,25 +19,30 @@ public class HomeController {
 
     private MenuController menuController;
 
-    private Member currentUser;
+    // Serviço e usuário
     private MeetingService meetingService = new MeetingService();
     private MemberService memberService = new MemberService();
+    private Member currentUser;
 
     public void setMenuController(MenuController menuController) {
         this.menuController = menuController;
     }
 
+    public void setCurrentUser(Member user) {
+        currentUser = user;
+        userName.setText(currentUser.getName());
+        /*
+            Diferente dos encontros em aberto (que está no initialize), a chamada dos encontros que envolvem o usuário
+            precisam ser chamados depois do controller receber o atual usuário, como o initialize executa antes de todos
+            métodos, movi estas chamadas para cá.
+         */
+        setUserSubs();
+        setUserMeetings();
+    }
 
     @FXML
     private void initialize() {
         setOpenMeetings();
-    }
-
-    public void setCurrentUser(Member user) {
-        currentUser = user;
-        userName.setText(currentUser.getName());
-        setUserSubs(); // FIZ A CHAMADA AQUI E NÃO NO INITIALIZE, POIS ELE EXECUTA ANTES DO CONTROLLER DEFINIR UM USUÁRIO
-        setUserMeetings();
     }
 
     private void setUserMeetings(){

@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class Member extends AbstractEntity{
@@ -28,14 +27,6 @@ public class Member extends AbstractEntity{
 
     @ManyToMany
     @JoinTable(
-            name = "member_attended_meetings",
-            joinColumns = @JoinColumn(name = "member_id"),
-            inverseJoinColumns = @JoinColumn(name = "meeting_id")
-    )
-    private List<Meeting> attendedMeetings; // Encontros que participou
-
-    @ManyToMany
-    @JoinTable(
             name = "member_subscribed_meetings",
             joinColumns = @JoinColumn(name = "member_id"),
             inverseJoinColumns = @JoinColumn(name = "meeting_id")
@@ -51,43 +42,42 @@ public class Member extends AbstractEntity{
         this.name = name;
         this.cpf = cpf;
         this.password = password;
-        this.attendedMeetings = new ArrayList<>();
         this.subscribedMeetings = new ArrayList<>();
         this.myMeetings = new ArrayList<>();
     }
 
     public Member() {
-
     }
 
-    // Getters
+    // MÉTODOS GETTERS
     public String getName() { return name; }
     public String getCpf() { return cpf; }
     public String getPassword() { return password; }
-    public List<Meeting> getAttendedMeetings() { return attendedMeetings; }
     public List<Meeting> getSubscribedMeetings() { return subscribedMeetings; }
     public List<Meeting> getMyMeetings() { return myMeetings; }
 
-    // Setters
+    // MÉTODOS SETTERS
     public void setName(String name) { this.name = name; }
     public void setCpf(String cpf) { this.cpf = cpf; }
     public void setPassword(String password) { this.password = password; }
-    public void setAttendedMeetings(List<Meeting> attendedMeetings) { this.attendedMeetings = attendedMeetings; }
     public void setSubscribedMeetings(List<Meeting> subscribedMeetings) { this.subscribedMeetings = subscribedMeetings; }
     public void setMyMeetings(List<Meeting> myMeetings) {this.myMeetings = myMeetings;}
 
+    // ADICIONA UM ENCONTRO A LISTA DE ENCONTROS INSCRITOS
+    /*
+        Ao invés deste método eu poderia fazer o seguinte:
+        encontro = encontroVelho.getSubscribedMeetings()
+        atualiza
+        encontroVelho = encontro.setSubscribedMeetings()
+        Mas a utilização de um método para isso, torna o código mais limpo.
+     */
     public void addSubscribedMeeting(Meeting meeting) {
         if (meeting != null) {
             this.subscribedMeetings.add(meeting);
         }
     }
 
-    public void addAttendedMeeting(Meeting meeting) {
-        if (meeting != null && !attendedMeetings.contains(meeting)) {
-            attendedMeetings.add(meeting);
-        }
-    }
-
+    // ADICIONA UM ENCONTRO A LISTA DE ENCONTROS EM QUE O USUÁRIO É ADMINISTRADOR
     public void addUserMeeting(Meeting meeting) {
         if (meeting != null) {
             this.myMeetings.add(meeting);
@@ -100,7 +90,6 @@ public class Member extends AbstractEntity{
                 "name='" + name + '\'' +
                 ", cpf=" + cpf +
                 ", password='" + password + '\'' +
-                ", attendedMeetings=" + attendedMeetings +
                 ", subscribedMeetings=" + subscribedMeetings +
                 ", myMeetings=" + myMeetings +
                 '}';

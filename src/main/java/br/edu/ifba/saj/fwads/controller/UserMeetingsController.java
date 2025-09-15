@@ -12,41 +12,32 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.time.LocalDate;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserMeetingsController {
+
     @FXML
     private TableColumn<Meeting, String> clnBook;
-
     @FXML
     private TableColumn<Meeting, String> clnHost;
-
     @FXML
     private TableColumn<Meeting, String> clnDate;
-
     @FXML
     private TableColumn<Meeting, String> clnSubs;
-
     @FXML
     private TableView<Meeting> tblMeetings;
 
     private MenuController menuController;
 
+    // Serviço e usuário
     private MeetingService meetingService = new MeetingService();
     private MemberService memberService = new MemberService();
-
     private Member currentUser;
 
     public void setMenuController(MenuController menuController) {
@@ -70,12 +61,11 @@ public class UserMeetingsController {
 
     @FXML
     void showEdit(ActionEvent actionEvent) {
-
         try{
             meetingService.checkAuthorization(tblMeetings.getSelectionModel().getSelectedItem(), currentUser);
 
             Stage stage = new Stage();
-            Scene scene = new Scene(App.loadFXML("controller/EditMeeting.fxml"), 715, 385);
+            Scene scene = new Scene(App.loadFXML("controller/EditMeeting.fxml"), 450, 750);
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             EditMeetingController controller = (EditMeetingController) App.getController();

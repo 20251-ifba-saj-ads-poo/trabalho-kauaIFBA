@@ -28,6 +28,17 @@ public class CreateBookController {
 
     private BookService bookService = new BookService();
 
+    private CreateMeetingController createMeetingController;
+    private EditMeetingController editMeetingController;
+
+    public void setCreateMeetingController(CreateMeetingController createMeetingController) {
+        this.createMeetingController = createMeetingController;
+    }
+
+    public void setEditMeetingController(EditMeetingController editMeetingController) {
+        this.editMeetingController = editMeetingController;
+    }
+
     @FXML
     void newBook(ActionEvent event) {
 

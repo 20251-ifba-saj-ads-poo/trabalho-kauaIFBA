@@ -49,7 +49,6 @@ public class Book extends AbstractEntity {
     }
 
     public Book() {
-
     }
 
     // Getters

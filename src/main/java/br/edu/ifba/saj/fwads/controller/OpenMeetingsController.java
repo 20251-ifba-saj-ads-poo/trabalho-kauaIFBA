@@ -1,7 +1,7 @@
 package br.edu.ifba.saj.fwads.controller;
 
+import br.edu.ifba.saj.fwads.App;
 import br.edu.ifba.saj.fwads.exception.UserAlreadySubscribed;
-import br.edu.ifba.saj.fwads.model.Book;
 import br.edu.ifba.saj.fwads.model.Meeting;
 import br.edu.ifba.saj.fwads.model.Member;
 import br.edu.ifba.saj.fwads.service.BookService;
@@ -21,10 +21,10 @@ public class OpenMeetingsController {
 
     private MenuController menuController;
 
+    // Serviço e usuário
     private BookService bookService = new BookService();
     private MeetingService meetingService = new MeetingService();
     private MemberService memberService = new MemberService();
-
     private Member currentUser;
 
     public void setMenuController(MenuController menuController) {
@@ -66,10 +66,8 @@ public class OpenMeetingsController {
             Meeting subMeeting = slOpenMeetings.getSelectionModel().getSelectedItem();
             currentUser.addSubscribedMeeting(subMeeting);
             memberService.update(currentUser);
-            //memberService.update(currentUser).addSubscribedMeeting(subMeeting);
 
             new Alert(Alert.AlertType.CONFIRMATION, "Você se inscreveu no encontro do livro " + subMeeting.getBook().getTitle() + " ministrada por:  " + subMeeting.getHost().getName() + " que irá ocorrer em: " + subMeeting.getDateAndTime()).showAndWait();
-            //clear();
         } catch (UserAlreadySubscribed e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
         } catch (Exception e) {
@@ -79,8 +77,9 @@ public class OpenMeetingsController {
     }
 
     @FXML
-    void seeMore(ActionEvent event) {
-
+    void cancel(ActionEvent event) {
+        StartController.creatingNewAccount = false;
+        App.setRoot("controller/Menu.fxml");
     }
 
     private void loadMeetingList() {

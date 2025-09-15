@@ -11,7 +11,10 @@ import br.edu.ifba.saj.fwads.service.MeetingService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 public class EditMeetingController {
@@ -32,29 +35,8 @@ public class EditMeetingController {
     private MeetingService meetingService = new MeetingService();
     private BookService bookService = new BookService();
 
-
     public void setUserMeetingController(UserMeetingsController userMeetingsController) {
         this.userMeetingsController = userMeetingsController;
-    }
-
-    public void getMeeting(Meeting meeting) {
-        this.meeting = meeting;
-        System.out.println("Meeting: " + meeting);
-    }
-
-    @FXML
-    void save(ActionEvent actionEvent) {
-        try{
-            meetingService.updateMeeting(dpDate.getValue(), slBook.getValue(), meeting);
-
-            new Alert(Alert.AlertType.CONFIRMATION, "Encontro do livro " + slBook.getSelectionModel().getSelectedItem().getTitle() + " agendado com sucesso para a data " + dpDate.getValue()).showAndWait();
-            clear();
-        } catch (IncorretFormatException | ImpossibleTimeTravel e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Erro inesperado, favor entra em contato com a equipe de desenvolvimento").showAndWait();
-        }
     }
 
     @FXML
@@ -91,7 +73,6 @@ public class EditMeetingController {
                 }
             }
         });
-
     }
 
     private void loadBookList() {
@@ -99,18 +80,39 @@ public class EditMeetingController {
     }
 
     @FXML
-    void newBook(ActionEvent actionEvent) {
+    void save(ActionEvent actionEvent) {
+        try{
+            meetingService.updateMeeting(dpDate.getValue(), slBook.getValue(), meeting);
 
+            new Alert(Alert.AlertType.CONFIRMATION, "Encontro do livro " + slBook.getSelectionModel().getSelectedItem().getTitle() + " agendado com sucesso para a data " + dpDate.getValue()).showAndWait();
+            clear();
+        } catch (IncorretFormatException | ImpossibleTimeTravel e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Erro inesperado, favor entra em contato com a equipe de desenvolvimento").showAndWait();
+        }
     }
 
     @FXML
-    void cancel(ActionEvent actionEvent) {
+    void newBook(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        Scene scene = new Scene(App.loadFXML("controller/CreateBook.fxml"), 450, 750);
+        stage.setScene(scene);        stage.initModality(Modality.APPLICATION_MODAL);
+        CreateBookController controller = (CreateBookController) App.getController();
+        controller.setEditMeetingController(this);
 
+        stage.showAndWait();
     }
 
     @FXML
     private void clear() {
         slBook.setValue(null);
         dpDate.setValue(null);
+    }
+
+    public void getMeeting(Meeting meeting) {
+        this.meeting = meeting;
+        System.out.println("Meeting: " + meeting);
     }
 }
