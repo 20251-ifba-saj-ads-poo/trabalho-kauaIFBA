@@ -424,3 +424,6 @@ MERGE INTO Book (id, title, author, genre, synopsis, publisher, publicationYear)
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "INTEGER to DATE" [22018-224]
 2025-09-11 16:14:21.984559-03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "INTEGER to DATE" [22018-224]
+2025-09-15 14:13:46.769727-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "SYNOPSIS CHARACTER VARYING(255)": "U&' hist\\00f3ria do capit\\00e3o Ahab, em busca de vingan\\00e7a contra o terr\\00e... (334)"; SQL statement:
+insert into Book (author, genre, publicationYear, publisher, synopsis, title, id) values (?, ?, ?, ?, ?, ?, ?) [22001-224]
